@@ -16,13 +16,9 @@ public struct HStack: PDFDrawable {
     public init(@PDFDrawableBuilder drawables: () -> [PDFDrawable]) {
         let drawables = drawables()
         self.drawables = drawables
-        self.size = drawables.isEmpty ? .zero : drawables.dropFirst()
-            .reduce(drawables.first!.size) { partial, next in
-                CGSize(
-                    width: partial.width + next.size.width,
-                    height: max(partial.height, next.size.height)
-                )
-            }
+        self.size = drawables.reduce(.zero) { partial, next in
+            CGSize(width: partial.width + next.size.width, height: max(partial.height, next.size.height))
+        }
     }
 
     public func draw(context: UIGraphicsPDFRendererContext, origin: CGPoint) {
