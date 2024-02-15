@@ -13,8 +13,7 @@ public struct Text: PDFDrawable {
     public let size: CGSize
     let attributedString: NSAttributedString
 
-    public init(text: String, weight: UIFont.Weight = .regular, alignment: NSTextAlignment = .natural, width: CGFloat) {
-        let font = UIFont.systemFont(ofSize: 12, weight: weight)
+    public init(text: String, font: UIFont, alignment: NSTextAlignment = .natural, width: CGFloat) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = alignment
         let attributes = [
