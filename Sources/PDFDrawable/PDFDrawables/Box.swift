@@ -7,7 +7,6 @@
 
 import CoreGraphics
 import Foundation
-import PDFKit
 
 public struct Box: PDFDrawable {
     public let size: CGSize
@@ -20,13 +19,7 @@ public struct Box: PDFDrawable {
         self.strokeColor = strokeColor
     }
 
-    public func draw(context: UIGraphicsPDFRendererContext, origin: CGPoint) {
-        let cgContext = context.cgContext
-        cgContext.saveGState()
-        cgContext.setLineWidth(lineWidth)
-        cgContext.setStrokeColor(strokeColor)
-        cgContext.addRect(CGRect(origin: origin, size: size))
-        cgContext.strokePath()
-        cgContext.restoreGState()
+    public func draw(context: DrawContext, origin: CGPoint) {
+        context.drawBox(lineWidth: lineWidth, strokeColor: strokeColor, origin: origin, size: size)
     }
 }

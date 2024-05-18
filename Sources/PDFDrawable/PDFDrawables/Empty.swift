@@ -6,15 +6,15 @@
 //  Copyright © 2024 Daniel Tartaglia. MIT License.
 //
 
+import CoreGraphics
 import Foundation
-import PDFKit
 
 public struct Empty: PDFDrawable {
-	public let size: CGSize
+    public let size: CGSize
 
-	public init(size: CGSize = .zero) {
-		self.size = size
-	}
+    public init(size: CGSize = .zero) {
+        self.size = size
+    }
 
-	public func draw(context _: UIGraphicsPDFRendererContext, origin _: CGPoint) { }
+    public func draw(context _: DrawContext, origin _: CGPoint) { }
 }

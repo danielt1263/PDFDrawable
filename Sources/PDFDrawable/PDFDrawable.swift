@@ -11,11 +11,11 @@ import PDFKit
 
 public protocol PDFDrawable {
     var size: CGSize { get }
-    func draw(context: UIGraphicsPDFRendererContext, origin: CGPoint)
+    func draw(context: DrawContext, origin: CGPoint)
 }
 
 public extension PDFDrawable {
-    func draw(context: UIGraphicsPDFRendererContext) {
+    func draw(context: DrawContext) {
         draw(context: context, origin: CGPoint.zero)
     }
 }

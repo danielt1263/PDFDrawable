@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import PDFKit
 
 public struct Offseter: PDFDrawable {
     public let size: CGSize
@@ -20,7 +19,7 @@ public struct Offseter: PDFDrawable {
         self.drawable = drawable
     }
 
-    public func draw(context: UIGraphicsPDFRendererContext, origin: CGPoint) {
+    public func draw(context: DrawContext, origin: CGPoint) {
         drawable.draw(context: context, origin: CGPoint(x: origin.x + offset.x, y: origin.y + offset.y))
     }
 }

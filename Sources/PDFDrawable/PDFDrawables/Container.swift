@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import PDFKit
 
 public struct Container: PDFDrawable {
     public let size: CGSize
@@ -21,7 +20,7 @@ public struct Container: PDFDrawable {
         self.drawables = drawables
     }
 
-    public func draw(context: UIGraphicsPDFRendererContext, origin: CGPoint) {
+    public func draw(context: DrawContext, origin: CGPoint) {
         for each in drawables {
             each.draw(context: context, origin: origin)
         }
