@@ -1,5 +1,5 @@
 //
-//  Offseter.swift
+//  Offsetter.swift
 //  PDFDrawable
 //
 //  Created by Daniel Tartaglia on 15 Feb 2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Offseter: PDFDrawable {
+public struct Offsetter: PDFDrawable {
     public let size: CGSize
     let offset: CGPoint
     let drawable: PDFDrawable
@@ -19,7 +19,7 @@ public struct Offseter: PDFDrawable {
         self.drawable = drawable
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        drawable.draw(context: context, origin: CGPoint(x: origin.x + offset.x, y: origin.y + offset.y))
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        drawable.draw(origin: CGPoint(x: origin.x + offset.x, y: origin.y + offset.y))
     }
 }

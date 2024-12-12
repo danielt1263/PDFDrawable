@@ -20,9 +20,7 @@ public struct Container: PDFDrawable {
         self.drawables = drawables
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        for each in drawables {
-            each.draw(context: context, origin: origin)
-        }
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        drawables.flatMap { $0.draw(origin: origin) }
     }
 }

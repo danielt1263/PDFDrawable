@@ -20,12 +20,11 @@ public struct HStack: PDFDrawable {
         }
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        guard !drawables.isEmpty else { return }
-        var x = 0 as CGFloat
-        for each in drawables {
-            each.draw(context: context, origin: CGPoint(x: origin.x + x, y: origin.y))
-            x += each.size.width
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        let xs = drawables.reduce(into: [origin.x]) { partial, next in
+            partial.append(partial.last! + next.size.width)
         }
+        return zip(drawables, xs)
+            .flatMap { $0.0.draw(origin: CGPoint(x: $0.1, y: origin.y)) }
     }
 }

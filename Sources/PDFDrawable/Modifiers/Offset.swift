@@ -11,6 +11,6 @@ import Foundation
 
 public extension PDFDrawable {
     func offset(x: CGFloat = 0, y: CGFloat = 0) -> PDFDrawable {
-        Offseter(x: x, y: y, drawable: self)
+        Offsetter(x: x, y: y, drawable: self)
     }
 }

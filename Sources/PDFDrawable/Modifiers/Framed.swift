@@ -11,7 +11,7 @@ import Foundation
 public extension PDFDrawable {
     func framed(padding: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) -> PDFDrawable {
         Container {
-            Offseter(x: padding, y: padding, drawable: self)
+            Offsetter(x: padding, y: padding, drawable: self)
             Box(
                 size: CGSize(width: size.width + 2 * padding, height: size.height + 2 * padding),
                 lineWidth: lineWidth,

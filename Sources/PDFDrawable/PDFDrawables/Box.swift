@@ -19,7 +19,7 @@ public struct Box: PDFDrawable {
         self.strokeColor = strokeColor
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        context.drawBox(lineWidth: lineWidth, strokeColor: strokeColor, origin: origin, size: size)
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        [.drawBox(lineWidth: lineWidth, strokeColor: strokeColor, origin: origin, size: size)]
     }
 }

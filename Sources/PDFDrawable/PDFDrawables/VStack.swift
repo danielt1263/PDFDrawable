@@ -20,12 +20,11 @@ public struct VStack: PDFDrawable {
         }
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        guard !drawables.isEmpty else { return }
-        var y = 0 as CGFloat
-        for each in drawables {
-            each.draw(context: context, origin: CGPoint(x: origin.x, y: origin.y + y))
-            y += each.size.height
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        let ys = drawables.reduce(into: [origin.y]) { partial, next in
+            partial.append(partial.last! + next.size.height)
         }
+        return zip(drawables, ys)
+            .flatMap { $0.0.draw(origin: CGPoint(x: origin.x, y: $0.1)) }
     }
 }

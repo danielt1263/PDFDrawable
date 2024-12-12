@@ -16,5 +16,5 @@ public struct Empty: PDFDrawable {
         self.size = size
     }
 
-    public func draw(context _: DrawContext, origin _: CGPoint) { }
+    public func draw(origin: CGPoint) -> [DrawCommand] { [] }
 }

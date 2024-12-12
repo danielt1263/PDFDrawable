@@ -24,8 +24,8 @@ public struct Text: PDFDrawable {
         self.size = CGSize(width: width, height: attributedString.height(containerWidth: width))
     }
 
-    public func draw(context: DrawContext, origin: CGPoint) {
-        context.drawString(attributedString: attributedString, origin: origin, size: size)
+    public func draw(origin: CGPoint) -> [DrawCommand] {
+        [.drawString(attributedString: attributedString, origin: origin, size: size)]
     }
 }
 
